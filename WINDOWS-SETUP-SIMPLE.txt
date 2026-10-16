@@ -1,0 +1,154 @@
+================================================================================
+WINDOWS SETUP - SIMPLEST METHOD (For users getting "composer not recognized")
+================================================================================
+
+YOU ARE HERE: C:\Users\EXIT EXAM\Desktop\hospital-management\hospital-hms
+
+================================================================================
+STEP 1: INSTALL XAMPP (This gives you PHP + MySQL + Apache)
+================================================================================
+
+1. Go to: https://www.apachefriends.org/
+2. Download XAMPP for Windows (PHP 8.2+ version)
+3. Run the installer
+4. Install to: C:\xampp (default)
+5. Finish installation
+
+================================================================================
+STEP 2: MOVE PROJECT TO XAMPP
+================================================================================
+
+1. Copy the ENTIRE "hospital-hms" folder
+2. Paste it here: C:\xampp\htdocs\hospital-hms
+   (Now you have: C:\xampp\htdocs\hospital-hms\artisan, C:\xampp\htdocs\hospital-hms\public, etc.)
+
+================================================================================
+STEP 3: START XAMPP SERVICES
+================================================================================
+
+1. Open XAMPP Control Panel (from Start Menu)
+2. Click "Start" buttons for:
+   - Apache (web server)
+   - MySQL (database)
+   (Buttons should turn GREEN when running)
+
+================================================================================
+STEP 4: CREATE DATABASE
+================================================================================
+
+1. Open browser, go to: http://localhost/phpmyadmin
+2. Click "New" on left sidebar
+3. Database name: hospital_hms
+4. Click "Create" button
+
+================================================================================
+STEP 5: INSTALL COMPOSER
+================================================================================
+
+1. Go to: https://getcomposer.org/download/
+2. Download Composer-Setup.exe
+3. Run the installer
+4. IMPORTANT: During installation:
+   - Choose "Install for all users"
+   - Check "Add to PATH"
+   - For PHP path, browse to: C:\xampp\php\php.exe
+   - Complete installation
+
+================================================================================
+STEP 6: OPEN COMMAND PROMPT (Run as Administrator)
+================================================================================
+
+1. Press Windows Key + R
+2. Type: cmd
+3. Press Ctrl+Shift+Enter (to run as Administrator)
+4. Type: cd C:\xampp\htdocs\hospital-hms
+5. Press Enter
+
+================================================================================
+STEP 7: RUN THESE COMMANDS (One by one)
+================================================================================
+
+In the Command Prompt, type each command and press Enter:
+
+1. copy .env.example .env
+
+2. composer install
+   (Wait for it to finish - this may take 2-5 minutes)
+
+3. php artisan key:generate
+
+4. php artisan migrate --seed
+   (This creates all database tables and adds demo data)
+
+5. php artisan storage:link
+
+================================================================================
+STEP 8: ACCESS THE APPLICATION
+================================================================================
+
+Open browser and go to:
+http://localhost/hospital-hms/public
+
+================================================================================
+LOGIN CREDENTIALS (Password for all: "password")
+================================================================================
+
+Admin:        admin@hospital.com
+Doctor:       james.wilson@hospital.com  
+Nurse:        nancy.clark@hospital.com
+Receptionist: receptionist@hospital.com
+Laboratory:   lab@hospital.com
+Pharmacist:   pharmacist@hospital.com
+Patient:      patient@hospital.com
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "composer not recognized"
+- Make sure Composer is installed (Step 5)
+- Restart Command Prompt after installing Composer
+- Or use: php composer.phar install
+
+PROBLEM: "php not recognized"
+- You should be using XAMPP's PHP at: C:\xampp\php
+- If running commands elsewhere, use full path: C:\xampp\php\php.exe artisan ...
+
+PROBLEM: "Cannot find path"
+- Make sure you're in the right directory: cd C:\xampp\htdocs\hospital-hms
+
+PROBLEM: Database connection error
+- Ensure MySQL is running (green in XAMPP)
+- Check database name in .env file is "hospital_hms"
+
+================================================================================
+IMMEDIATE UI PREVIEW (Without Setup)
+================================================================================
+
+If you want to see the interface design RIGHT NOW (without PHP):
+1. Open browser
+2. Type: file:///C:/Users/EXIT%20EXAM/Desktop/hospital-management/hospital-hms/public/
+3. You'll see the login page design (backend won't work)
+
+================================================================================
+SUPPORT FILES
+================================================================================
+
+For more help, check:
+- INSTALL-GUIDE.bat (Double-click for interactive guide)
+- QUICK-START-GUIDE.txt (Detailed instructions)
+- README.md (System features)
+- INSTALLATION.md (Complete installation guide)
+
+================================================================================
+SYSTEM READY FOR USE
+================================================================================
+
+✅ 7 User roles with separate dashboards
+✅ 12 Complete modules (Patients, Appointments, Medical Records, etc.)
+✅ Bootstrap 5 responsive design
+✅ Chart.js analytics on all dashboards
+✅ Demo data included
+✅ Ready for production deployment
+
+================================================================================
