@@ -1,243 +1,127 @@
-# Hospital Management System (HMS) - Laravel 12
+# Hospital Management System (HMS)
 
-A comprehensive multi-role hospital management system built with Laravel 12, Bootstrap 5, and MySQL.
+A multi-role hospital management system built with Laravel 12, Bootstrap 5, and MySQL.
 
-## 📋 Features
+## Features
 
-### **User Roles:**
-- **👨‍💼 Administrator**: Full system control, user management, reports, settings
-- **👨‍⚕️ Doctor**: Patient management, appointments, prescriptions, lab requests
-- **👩‍⚕️ Nurse**: Patient vital signs, admissions, nursing notes
-- **🧑‍💻 Receptionist**: Patient registration, appointment booking, billing
-- **🧪 Laboratory Staff**: Test requests, results recording, reports
-- **💊 Pharmacist**: Medicine inventory, prescription dispensing, stock management
-- **👤 Patient**: View appointments, medical history, profile management
+- **Administrator:** User management, reports, settings, and system oversight.
+- **Doctor:** Patient records, appointments, prescriptions, and laboratory requests.
+- **Nurse:** Vital signs, admissions, nursing notes, and bed management.
+- **Receptionist:** Patient registration, appointments, and billing.
+- **Laboratory staff:** Test requests, results, and reports.
+- **Pharmacist:** Medicine inventory and prescription dispensing.
+- **Patient:** Appointments, medical history, and profile management.
 
-### **Core Modules:**
-- Patient Management & Registration
-- Doctor & Department Management
-- Appointment Scheduling
-- Medical Records & Diagnosis
-- Prescription Management
-- Laboratory Test Management
-- Pharmacy & Inventory Management
-- Billing & Invoicing
-- Admission & Ward Management
-- Reports & Analytics Dashboard
+### Core modules
 
-## 🚀 Quick Start
+- Patient registration and management
+- Doctors and departments
+- Appointment scheduling
+- Medical records and diagnosis
+- Prescriptions
+- Laboratory tests and results
+- Pharmacy and inventory
+- Billing and invoices
+- Admissions, wards, and beds
+- Reports and analytics
 
-### **Prerequisites:**
+## Requirements
+
 - PHP 8.2 or higher
-- MySQL 8.0 or higher
+- MySQL or MariaDB
 - Composer
-- XAMPP/WAMP/Laragon (for Windows) or LAMP stack
+- XAMPP, WAMP, or another compatible local development environment
 
-### **Installation:**
+## Installation on Windows
 
-1. **Clone/Copy the project** to your web server directory:
-   ```
-   C:\xampp\htdocs\hospital-hms\
-   ```
+1. Place the project in `C:\xampp\htdocs\hospital-hms`.
+2. Create a MySQL database named `hospital_hms` using phpMyAdmin.
+3. Copy `.env.example` to `.env`.
+4. Configure the database settings in `.env`:
 
-2. **Create MySQL Database:**
-   ```sql
-   CREATE DATABASE hospital_hms;
-   ```
-
-3. **Configure Environment:**
-   - Copy `.env.example` to `.env`
-   - Update database credentials:
-   ```
+   ```dotenv
    DB_DATABASE=hospital_hms
    DB_USERNAME=root
    DB_PASSWORD=
    ```
 
-4. **Install Dependencies & Setup:**
-   ```bash
+   Adjust the username and password to match your local database configuration.
+
+5. Open PowerShell in the project directory and run:
+
+   ```powershell
    composer install
    php artisan key:generate
    php artisan migrate --seed
-   ```
-
-5. **Create Storage Symlink:**
-   ```bash
    php artisan storage:link
-   ```
-
-6. **Set Permissions:**
-   ```bash
-   chmod -R 775 storage bootstrap/cache
-   ```
-
-7. **Start Server:**
-   ```bash
    php artisan serve
    ```
-   Visit: http://localhost:8000
 
-## 👥 Demo Login Credentials
+6. Open `http://127.0.0.1:8000` in your browser.
 
-**Password for all accounts: `password`**
+Run migrations and seeders only after confirming your database configuration. Do not run destructive database commands against a database containing important data without a backup.
 
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | `admin@hospital.com` | password |
-| Doctor | `james.wilson@hospital.com` | password |
-| Nurse | `nancy.clark@hospital.com` | password |
-| Receptionist | `receptionist@hospital.com` | password |
-| Laboratory | `lab@hospital.com` | password |
-| Pharmacist | `pharmacist@hospital.com` | password |
-| Patient | `patient@hospital.com` | password |
+## Database
 
-## 📁 Project Structure
+The system may include tables for:
 
-```
-hospital-hms/
-├── app/
-│   ├── Http/Controllers/    # Role-based controllers
-│   ├── Models/              # Eloquent models
-│   ├── Middleware/          # Role middleware
-│   └── Providers/           # Service providers
-├── database/
-│   ├── migrations/          # Database migrations
-│   └── seeders/            # Faker data seeders
-├── resources/
-│   ├── views/              # Blade templates
-│   │   ├── admin/          # Admin views
-│   │   ├── doctor/         # Doctor views
-│   │   ├── nurse/          # Nurse views
-│   │   └── ...
-├── public/                  # Public assets
-├── routes/                  # Web routes
-└── config/                  # Configuration
+- Users and roles
+- Patients and doctors
+- Departments and appointments
+- Medical records and prescriptions
+- Laboratory requests and results
+- Medicines and inventory
+- Invoices and admissions
+
+The actual tables depend on the migrations included in the project.
+
+## Technology stack
+
+- **Backend:** Laravel 12 and PHP
+- **Frontend:** Blade templates, Bootstrap 5, and custom CSS
+- **Database:** MySQL or MariaDB
+- **Visualization:** Chart.js, if configured
+- **Version control:** Git and GitHub
+
+## Development commands
+
+Run database migrations:
+
+```powershell
+php artisan migrate
 ```
 
-## 🗄️ Database Schema
+Create a migration:
 
-Key Tables:
-- `users` - Authentication & roles
-- `patients` - Patient information
-- `doctors` - Doctor profiles
-- `appointments` - Appointment scheduling
-- `medical_records` - Medical history
-- `prescriptions` - Prescriptions
-- `lab_requests` - Laboratory requests
-- `medicines` - Medicine inventory
-- `invoices` - Billing
-- `admissions` - Patient admissions
-
-## 🎨 Tech Stack
-
-- **Backend**: Laravel 12 (PHP Framework)
-- **Frontend**: Bootstrap 5, Chart.js, Font Awesome
-- **Database**: MySQL/MariaDB
-- **Authentication**: Laravel Authentication
-- **Charting**: Chart.js for data visualization
-- **Icons**: Font Awesome 6
-- **Styling**: Custom CSS with Bootstrap 5
-
-## 🔧 Development
-
-### **Run Seeder to Populate Data:**
-```bash
-php artisan db:seed
-```
-
-### **Create New Migration:**
-```bash
+```powershell
 php artisan make:migration create_table_name
 ```
 
-### **Run Migrations:**
-```bash
-php artisan migrate
-php artisan migrate:refresh --seed
+Run seeders:
+
+```powershell
+php artisan db:seed
 ```
 
-## 📊 Features in Detail
+## Security
 
-### **Administrator Dashboard:**
-- Real-time statistics and charts
-- User management across all roles
-- Financial reports and analytics
-- System configuration
-- Audit logs and monitoring
+- Keep `.env` and all credentials out of Git.
+- Use Laravel's password hashing and authentication facilities.
+- Apply authorization checks to role-specific routes and actions.
+- Validate inputs and protect sensitive patient information.
+- Back up the database and restrict access to production data.
 
-### **Doctor Portal:**
-- Patient appointment management
-- Electronic medical records
-- Digital prescription writing
-- Laboratory test requests
-- Diagnosis and treatment plans
+## Contributing
 
-### **Nurse Station:**
-- Patient vital signs recording
-- Admission and discharge management
-- Nursing notes and observations
-- Bed and ward management
-- Medication administration
+1. Create a feature branch.
+2. Make and test your changes.
+3. Commit your changes.
+4. Push the branch to GitHub.
+5. Open a pull request.
 
-### **Reception Desk:**
-- Patient registration and check-in
-- Appointment booking
-- Billing and invoice generation
-- Patient search and lookup
-- Report generation
+## License
 
-### **Laboratory Module:**
-- Test request management
-- Result recording and verification
-- Test reports and printouts
-- Test statistics and analysis
+Add the appropriate license after deciding how this project may be used and distributed.
 
-### **Pharmacy Module:**
-- Medicine inventory management
-- Prescription dispensing
-- Stock alerts and reordering
-- Expiry date tracking
-- Supplier management
-
-## 🛡️ Security Features
-
-- Role-based access control (RBAC)
-- Password hashing with bcrypt
-- CSRF protection
-- XSS prevention
-- SQL injection protection
-- Session management
-- Secure file uploads
-
-## 📈 Reporting & Analytics
-
-- Patient statistics and demographics
-- Financial reports (revenue, expenses)
-- Appointment analytics
-- Laboratory test statistics
-- Medicine usage reports
-- Export reports to PDF/Excel
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For issues, feature requests, or questions:
-- Create an issue in the repository
-- Email: support@hospital-hms.com
-
----
-
-**Version**: 1.0.0  
-**Last Updated**: October 2026  
-**Author**: Hospital HMS Development Team
+**Project:** Hospital Management System  
+**Version:** 1.0.0
